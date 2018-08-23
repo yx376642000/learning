@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineJoin</title>
+</head>
+<body>
+	<canvas id="canvas" width="900" height="700" style="display: block;background: #f0f0f0; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext('2d');
+		ctx.lineWidth = 10;
+
+		ctx.beginPath();
+		ctx.moveTo(100,100);
+		ctx.lineTo(500,100);
+		ctx.lineTo(500,50);
+		ctx.lineTo(700,125);
+		ctx.lineTo(500,200);
+		ctx.lineTo(500,150);
+		ctx.lineTo(100,150);
+		ctx.strokeStyle = "#f00";
+		ctx.lineJoin = 'miter'; //default
+		ctx.miterLimit = 20; //默认为10
+		ctx.closePath();
+		ctx.stroke();
+
+		
+		ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(500,300);
+		ctx.lineTo(500,250);
+		ctx.lineTo(700,325);
+		ctx.lineTo(500,400);
+		ctx.lineTo(500,350);
+		ctx.lineTo(100,350);
+		ctx.strokeStyle = "blue";
+		ctx.lineJoin = "bevel";
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(100,500);
+		ctx.lineTo(500,500);
+		ctx.lineTo(500,450);
+		ctx.lineTo(700,525);
+		ctx.lineTo(500,600);
+		ctx.lineTo(500,550);
+		ctx.lineTo(100,550);
+		ctx.strokeStyle = "green";
+		ctx.fillStyle = "green";
+		ctx.lineJoin = "round";
+		ctx.closePath();
+		ctx.fill();
+		ctx.stroke();
+
+
+
+
+
+	</script>
+</body>
+</html>

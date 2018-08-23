@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date</title>
+	<style type="text/css">
+		*{margin:0;padding: 0}
+		.btn{
+			width: 200px;height: 30px;text-align: center;
+			line-height: 30px;font-size: 18px;background: #0f0;
+			margin: 100px auto;
+			color: #fff;
+		}
+		p{
+			margin: 100px auto;
+			text-align: center;
+			border:1px solid #eeeeee;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="btn" class="btn">获取年月日</div>
+<p id="show"></p>
+
+<script type="text/javascript">
+	window.onload=function(){
+
+		var btn = document.getElementById("btn");
+		var show = document.getElementById('show');
+		btn.onclick = function(){
+			console.log(1)
+			var date = new Date();
+			var year = date.getFullYear();
+			var mon = date.getMonth()+1;
+			var day = date.getDate();
+			var week = date.getDay();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			show.innerHTML = year + ' 年 ' + mon + ' 月 ' + day + ' 日 星期 ' + week +"&nbsp;&nbsp;&nbsp;"+ h + ":" + m + ":" + s; 
+		}
+
+		setInterval(function(){
+			var date = new Date();
+			var year = date.getFullYear();
+			var mon = date.getMonth()+1;
+			var day = date.getDate();
+			var week = date.getDay();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			show.innerHTML = year + ' 年 ' + mon + ' 月 ' + day + ' 日 星期 ' + week +"&nbsp;&nbsp;&nbsp;"+ h + ":" + m + ":" + s; 
+		},1000)
+
+	};
+</script>
+</body>
+</html>

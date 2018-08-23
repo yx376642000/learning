@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	
+</head>
+<body>
+	<div>
+		<p></p>
+		<i></i>
+		<b></b>
+		<span></span>
+	</div>	
+	
+<script type="text/javascript">
+//返回元素的兄弟节点，n > 0 返回下一个兄弟节点  n < 0 返回前一个兄弟节点
+	function retSibling( e , n ){
+		while( e && n){
+			if(n > 0 ){
+				if(0 && e.nextElementSibling ){
+					e = e.nextElementSibling;
+				} else {
+					for( e = e.nextSibling; e && e.nodeType != 1 ; e = e.nextSibling);
+				}
+				n--;
+			} else {
+				if( e.previousElementSibling ){
+					e = e.previousElementSibling;
+				} else {
+					for( e = e.previousSlibling; e && e.nodeType != 1 ; e = e.previousSlibling);
+				}
+				n++;
+			}
+
+		}
+		return e;
+	}
+	var b = document.getElementsByTagName('b')[0];
+
+</script>
+</body>
+</html>

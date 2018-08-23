@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+</head>
+<body>
+	
+	
+	<script>
+		//1.写一个函数，功能是告知你所选定的动物的叫声
+
+		var voice = function(name){
+
+			switch(name){
+
+				case "dog":
+					console.log('汪汪');
+					break;
+				case "cat":
+					console.log('喵喵');
+					break;
+				case "cow":
+					console.log('哞哞');
+					break;
+				default :
+					console.log("不知道")
+			}
+
+		}
+		/*voice("dog");
+		voice("cat");
+		voice("cow");
+		voice("tiger");*/
+
+		//2.写一个函数实现加法计数器
+		function sum(){
+
+			var result = 0;
+			for(var i = 0; i < arguments.length; i++){
+
+				result += arguments[i];
+
+			}
+			return result;
+		}
+
+		/*var test = sum(1,2,3,4,5,6,7,8,9,10,11);
+		console.log(test);*/
+		//3.定义一个函数，输入数字，逆转并输出汉字形式
+
+
+		function reverse(){
+			var num = window.prompt('input');
+			var str = '';
+
+			for(var i = num.length -1; i >= 0; i--){
+				str += transfer(num.charAt(i));
+			}
+			console.log(str);
+		}
+		function transfer( target){
+			switch(target){
+				case "1" :
+					return "壹"
+					
+				case "2" :
+					return '贰';
+					
+				case '3' :
+					return '叁';
+					
+				case "4" :
+					return '肆';
+					
+				case '5' :
+					return '伍';
+					
+				case "6" :
+					return '陆';
+					
+				case "7" :
+					return '柒';
+					
+				case "8" :
+					return '捌';
+
+				case "9" :
+					return '玖';
+
+				case "0" :
+					return '零';
+			}
+				
+		}
+
+		// reverse();
+
+
+
+		//4.写一个函数 实现n的阶乘
+		function factorial(){
+			if(arguments[0] <= 1){
+				return 1
+			}else{
+				return arguments[0] * arguments.callee(arguments[0]-1);
+			}
+		}
+/*
+		var test3 = factorial(4);
+		console.log(test3);*/
+
+		//5.写一个函数，实现斐波那契数列
+
+		function fibonacci(n){
+			if( n <= 2){
+				return 1;
+			}else{
+				return fibonacci(n-1) + fibonacci(n-2);
+			}
+		}
+		// console.log(fibonacci(40));
+
+
+		//6.输入一个低于十位的数字，输出它的中文大写
+
+		function inPutNum(num){
+			var num = window.prompt('input');
+			var str = ''
+			if(num.length >= 10){
+				alert("数字不能大于十位，请重新输入");
+				inPutNum();
+			}else{
+				console.log(num);
+			}
+		}
+
+		// inPutNum();
+
+		function outPut(num){
+
+			switch(num.length){
+				case '9':
+					return check(num.charAt[0]) + '亿';
+				case '8':
+					return check(num.charAt[0]) + "千万";
+				case '7':
+					return check(num.charAt[0]) + "百万";
+				case '6':
+					return check(num.charAt[0]) + "十万";
+				case '5':
+					return check(num.charAt[0]) + "万";
+				case '4':
+					return check(num.charAt[0]) + "千";
+				case '3':
+					return check(num.charAt[0]) + "百";
+				default:
+					return 
+
+			}
+		}
+
+		function link(){
+
+		}
+
+		function check(num){
+			if( num == 0 ){
+				return '零'
+			}else{
+				transfer(num);
+			}
+		}
+//检测字符串重复元素的个数
+	function fn2(str){
+		var count = 0;
+		for(var i= 0; i < str.length; i++){
+			for(var j = i+1; j < str.length - i - 1; j++){
+				if(str.charCodeAt(i) == str.charCodeAt(j)){
+					count ++;
+				}
+			}
+		}
+		console.log(count)
+	}
+
+fn2('aaaabbbccda')
+	</script>
+</body>
+</html>

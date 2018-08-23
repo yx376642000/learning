@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Swiper</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+	<style>
+	html,body{
+		position:relative;
+		height:100%;
+	}
+	body{
+		background:#eee;
+		font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+		font-size:14px;
+		color:#000;
+		margin:0;
+		padding:0;
+	}
+	.continer{
+		width:100%;
+		height: 712px;
+		background: #EDEBEA;
+	}
+	.swiper-container{
+		width: 1000px;
+		height: 512px;
+		margin: 70px auto;
+	}
+	.swiper-slide{
+		text-align:center;
+		font-size:18px;
+		background:#fff;
+		display:-webkit-box;
+		display:-ms-flexbox;
+		display:-webkit-flex;
+		display:flex;
+		-webkit-box-pack:center;
+		-ms-flex-pack:center;
+		-webkit-justify-content:center;
+		justify-content:center;
+		-webkit-box-align:center;
+		-ms-flex-align:center;
+		-webkit-align-items:center;
+		align-items:center;
+	}
+	.swiper-pagination-bullet{
+		width:198px;
+		height:48px;
+		text-align:center;
+		line-height:20px;
+		font-size:12px;
+		color:#000;
+		border-radius: 0;
+		text-align: center;
+		line-height: 50px;
+		border: 1px solid #B3B2B1;
+		font-size: 24px;
+		color: #5D5A57;
+	}
+	
+	.swiper-pagination-bullet-active{
+		color:#fff;
+		background: #B3B2B1;
+	}
+	#service{
+		margin-top: 60px;
+	}
+	.serviceTit{
+		width: 100%;
+		max-width: 1920px;
+		height: 688px;
+		background: #d6ccc3;
+	}
+	.tit{
+		width: 100%;height: 80px;background: url('assets/serviceTit.jpg') center no-repeat;
+		padding-top: 197px;
+	}
+</style>
+
+</head>
+<body>
+	<div id="service1">
+        <div class="serviceTit">
+            <div class="tit"></div>
+            <div class="swiper-pagination _nav"></div>
+        </div>
+        <div class="continer">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/aijiu.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/bdj.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/jywy.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/lbpd.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/mbhl.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/myhh.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/nlwq.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/rshx.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/wxjj.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/mbhl.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/wxjj.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/rshx.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/zsll.png" alt=""></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+<script>
+    var navArr = ['宝迪佳舒压按摩',"热石唤醒","艾灸护理","极微养源",'美韵呵护',"午休肩颈舒缓","淋巴排毒","面部护理",'至臻紧致换颜',"泥疗温灸","能量樽熏蒸","沐·中式理疗","沐·中式精油"]
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        paginationBulletRender: function (swiper, index, className) {
+            return '<span class="' + className + '">' + navArr[index] + '</span>';
+        }
+    });
+</script>
+
+</body>
+</html>

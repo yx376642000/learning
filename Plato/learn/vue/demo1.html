@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue demo-1</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+
+        }
+        html,body{
+            font-size: 14px;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--<p>{{msg}}</p>-->
+        <!--<p>name - {{plato.name}}</p>-->
+        <!--<p>age - {{plato.age}}</p>-->
+        <!--<p>gender - {{plato.gender}}</p>-->
+
+        <p>{{list}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:"demo-1",
+                plato:{
+                    gender:"男"
+                },
+                list:[1,2,3]
+            }
+        });
+        //对象响应式变化
+        //Vue.set(app.plato,"name","希声");
+        //app.$set(app.plato,"name","希声");
+        //app.plato = Object.assign({},app.plato,{"age":"22"});
+
+        //数组响应式变化
+        /*
+        * 数组变异方法，使用触发更新
+        * posh(),pop(),shift(),unshift(),splice(),sort(),reverse()
+        *
+        * */
+
+
+
+
+
+
+    </script>
+</body>
+</html>

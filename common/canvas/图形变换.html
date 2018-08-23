@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineJoin</title>
+</head>
+<body>
+	<canvas id="canvas" style="display: block;background: #f0f0f0; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		canvas.width = 900;
+		canvas.height = 600;
+		var ctx = canvas.getContext('2d');
+		ctx.lineWidth = 10;
+
+		function rnd (m ,n){
+			return Math.random() * m + (n - m); 
+		};
+		
+		for (var i = 0; i < 5; i++) {
+			var x = rnd(0,canvas.width);
+			var y = rnd(0,canvas.height);
+			var r = rnd(0,180);
+			var scale = rnd(1,1);
+			drawArrow(ctx,x,y,r,scale);
+		}
+
+		function drawArrow(ctx,x,y,rotation,scale){
+			ctx.save();
+			drawPath(ctx);
+			ctx.translate(x,y);
+			ctx.rotate( rotation / 180 * Math.PI );
+			ctx.scale(scale,scale);
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.restore();
+
+		};
+		function drawPath(ctx){
+			ctx.beginPath();
+			ctx.lineTo(100,200);
+			ctx.lineTo(500,200);
+			ctx.lineTo(500,150);
+			ctx.lineTo(700,225);
+			ctx.lineTo(500,300);
+			ctx.lineTo(500,250);
+			ctx.lineTo(100,250);
+			ctx.closePath();
+		}
+
+	</script>
+</body>
+</html>

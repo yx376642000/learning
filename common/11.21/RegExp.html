@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload=function(){
+				var str1 = 'cat, bat, sat, fat';
+				var pattern1 = /.at/g;
+				var matches = pattern1.exec(str1);
+				console.log(matches);
+				console.log(matches.index);
+
+				console.log(matches[0]);
+
+				console.log(matches.input);
+				
+			}
+		</script>
+	</body>
+</html>

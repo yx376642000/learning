@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+</head>
+<body>
+	
+	
+<script type="text/javascript">
+	//闭包实现累加器
+	function add() {
+		// body...
+		var count = 0;
+		function demo(){
+			count ++;
+			console.log(count)
+		}
+		return demo
+	}
+	var myCount = add();
+	
+
+	function fn1(n){
+		for(var i = 0; i < n; i++){
+			myCount();
+		}
+	}
+	fn1(1)
+	//用作缓存 存储结构
+	function test(){
+		var num = 100;
+		function a(){
+			num++;
+			console.log(num);
+		}
+		function b(){
+			num --;
+			console.log(num);
+		}
+		return [a,b];
+	}
+	var  myArr = test();
+	//myArr[0]();//101
+	//myArr[1]();//100
+
+	function eater(){
+		var food = '';
+		var obj ={
+			eat:function(){
+				console.log("i am eating " + food );
+			},
+			push:function(myFood){
+				food = myFood
+			}
+		}
+		return obj;
+	}
+	var p1 = eater();
+	p1.push('apple');
+	p1.eat();
+
+</script>
+</body>
+</html>

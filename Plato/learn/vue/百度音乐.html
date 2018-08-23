@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度音乐</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script src="js/vue.js"></script>
+    <style type="text/css">
+        body{background-color: #f4f4f4;}
+        #app{
+            padding: 20px 0px;
+            width: 700px;
+            margin: 100px auto;
+            line-height: 40px;
+            text-align: center;
+
+        }
+        .top{
+            background-color: #DF5762;
+            /*padding: 0 40px;*/
+            color: #333;
+            border-radius: 5px;
+
+        }
+        .main{
+            height: 300px;
+            padding: 10px 0px;
+            flex-direction: column;
+            background-color: #fff;
+            /*overflow-y: scroll;*/
+            /*overflow-x: hidden;*/
+        }
+        .main .item{
+            display: flex;
+            justify-content: space-around;
+        }
+        .main .item.active{background-color: #F0F4F8}
+        .bottom{
+            display: flex;
+            justify-content: space-between;
+            /*padding: 0 40px;*/
+            background-color: #DF5762;
+            border-radius: 5px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="top flex-box flex-between">
+            <div class="flex-item "><input type="checkbox" v-model="isCheckAll" name="all">全选</div>
+            <span class="flex-item ">歌单</span>
+            <span class="flex-item ">歌手</span>
+            <span class="flex-item ">专辑</span>
+        </div>
+        <div class="main">
+            <div class="item" v-for="item,index in songsList">
+                <div class="flex-item "><input type="checkbox" v-model="item.checked" name=""></div>
+                <span class="flex-item ">{{item.name}}</span>
+                <span class="flex-item ">{{item.singer}}</span>
+                <span class="flex-item ">{{item.album}}</span>
+            </div>
+            
+            
+        </div>
+        <div class="bottom">
+            <span class="flex-item ">统计：</span>
+            <span class="flex-item ">歌手有：{{selectSingersLen}}位</span>
+            <span class="flex-item ">专辑有：5张</span>
+        </div>
+    </div>
+    <script>
+        var data = [
+            {
+               id:Date.now()+Math.random(),
+               singer:"火箭少女101",
+               name:'卡路里',
+               album:'卡路里（西虹市首富）',
+               checked:true
+            },
+            {
+               id:Date.now()+Math.random(),
+               singer:"薛之谦",
+               name:'最好',
+               album:'《最好》',
+               checked:false
+            },
+            {
+               id:Date.now()+Math.random(),
+               singer:"薛之谦",
+               name:'认真的雪',
+               album:'《最好》',
+               checked:true
+            }
+        ];
+        data.forEach(item => item.index = -1);
+        var app = new Vue({
+            el:"#app",
+            data:{
+                songsList:data,
+            },
+            methods:{
+                
+            },
+            computed:{
+                isCheckAll:{
+                    //取值
+                    get(){
+                        //every方法，当数组中每一项都满足条件，返回true，否则返回false
+                        return this.songsList.every(function(item){
+                            return item.checked
+                        })
+                    },
+                    //设置值
+                    set(newValue){
+                        return this.songsList.forEach(item => item.checked = newValue);
+                    }
+                    
+                },
+                selectSingersLen(){
+                    let singers = this.songsList.filter(item => item.checked);
+                    return unique(singers).length;
+                }
+            }
+        });
+        function unique(arr){
+            var json = {};
+            var newArr = [];
+
+            arr.forEach((item)=>{
+                if(!json[item.singer]){
+                    json[item.singer] = true
+                    newArr.push(item);
+                }
+            })
+            return newArr;
+        }
+    </script>
+
+</body>
+</html>

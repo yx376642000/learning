@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nav</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<style type="text/css">
+		.nav{display: block;margin: 100px auto;width: 177px;}
+		.nav>li{
+			width: 175px;line-height: 55px;text-align: center;font-size: 18px;color: #333;border: 1px solid #000;border-bottom: none;cursor: pointer;
+		}
+		.nav>li:last-child{border: 1px solid #000;}		
+		.subNavBox{width:266px;border:solid 1px #e5e3da;margin:100px auto;}
+		.subNav{text-align: center; border-bottom:solid 1px #e5e3da;cursor:pointer;font-weight:bold;font-size:14px;color:#999;line-height:28px;padding-left:10px;/* background:url(images/jiantou1.jpg) no-repeat;background-position:95% 50% */}
+		.subNav:hover{color:#277fc2;}
+		.currentDd{color:#277fc2}
+		/*.currentDt{background-image:url(images/jiantou.jpg);}*/
+		.navContent{display: none;border-bottom:solid 1px #e5e3da;}
+		.navContent li a{display:block;heighr:28px;text-align:center;font-size:14px;line-height:28px;color:#333}
+		.navContent li a:hover{color:#fff;background-color:#277fc2}
+
+	</style>
+	<script type="text/javascript">
+		window.location.href= "http://www.baidu.com"
+	</script>
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+	<ul class="nav">
+		<li class="liNav">关于我们
+			<ul style="display: none;">
+				<li>企业简介</li>
+				<li>股权结构</li>
+				<li>发展历程</li>
+				<li>团队介绍</li>
+			</ul>
+		</li>
+		<li class="liNav">机构信息
+			<ul style="display: none;">
+				<li>企业简介</li>
+				<li>股权结构</li>
+				<li>发展历程</li>
+				<li>团队介绍</li>
+			</ul>
+		</li>
+		<li class="liNav">信披声明
+			<ul style="display: none;">
+				<li>企业简介</li>
+				<li>股权结构</li>
+				<li>发展历程</li>
+				<li>团队介绍</li>
+			</ul>
+		</li>
+		<li class="liNav">运营数据</li>
+		<li class="liNav">安全保障</li>
+		<li class="liNav">法律法规</li>
+		<li class="liNav">备案信息</li>
+		<li class="liNav">公司动态</li>
+		<li class="liNav">联系我们</li>
+	</ul>
+	<div class="subNavBox">
+
+		<div class="subNav">新闻中心</div>
+		<ul class="navContent">
+			<li><a href="#">添加新闻</a></li>
+			<li><a href="#">新闻管理</a></li>
+		</ul>
+		
+		<div class="subNav">关于我们</div>
+		<ul class="navContent">
+			<li><a href="#">新闻管理</a></li>
+			<li><a href="#">新闻管理</a></li>
+		</ul>
+		
+		<div class="subNav">业务系统</div>
+		<ul class="navContent">
+			<li><a href="#">添加新闻</a></li>
+			<li><a href="#">新闻管理</a></li>
+		</ul>
+			
+		<div class="subNav">招商加盟</div>
+		<ul class="navContent">
+			<li><a href="#">添加新闻</a></li>
+			<li><a href="#">新闻管理</a></li>
+		</ul>
+		
+	</div>
+
+	<script type="text/javascript">
+		$(".liNav").each(function(){
+			$(this).click(function(){
+				// console.log(this)
+				$(this).children().slideToggle("slow");
+				$(this).siblings().children().slideUp();
+			})
+		});
+		$(function(){
+			$(".subNav").click(function(){
+				$(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd");
+				// $(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt");
+				$(this).next(".navContent").slideToggle(300).siblings(".navContent").slideUp(500);
+			})	
+		})
+
+	</script>
+</body>
+</html>

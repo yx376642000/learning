@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	
+</head>
+<body>
+	
+	
+<script type="text/javascript">
+	
+	var person = {
+		name : 'xisheng',
+		aaa : 'sss',
+		age : 18,
+		sex : 'male',
+		skill : ['html5','css3','js','jQuery'],
+		project : {
+			name : 'blog',
+			date : '2017年9月20日',
+			beiai : '皖ICP-忘了'
+		}
+	}
+	var person1 = {};
+
+
+	function deepClone(origin,target){
+		var target = target || {};
+		//利用toString方法判断是否为引用值
+		var toStr = Object.prototype.toString;
+		var arrStr = '[object Array]';
+		//遍历对象
+		for(var prop in origin){
+			//判断是否为自己的属性值
+			if( origin.hasOwnProperty(prop) ){
+				//判断上是否为null或引用属性
+				if ( origin[prop] !== 'null' && typeof(origin[prop]) == 'object'){
+					//判断是数组还是对象
+					target[prop] = toStr.call(origin[prop]) == arrStr ? [] : {};
+					deepClone(origin[prop],target[prop]);
+				} else {
+					target[prop] = origin[prop];
+				}
+			} 
+		}
+		return target;
+	}
+	deepClone(person,person1);
+	console.log(person1)
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+
+	<style type="text/css">
+	*{margin: 0;padding:0;}
+		#Theback{
+			width: 100%;
+			height: 240px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="Theback"></canvas>
+
+
+<script type="text/javascript">
+	//获取画布
+	var beisizer = document.getElementById("Theback");
+	var ContenofBeisizer = beisizer.getContext("2d");
+	//设置波浪海域（海浪宽度，高度）
+	var beisizerwidth = beisizer.width;
+	var beisizerheight = beisizer.height;
+	var beisizerlinewidth = 2;
+	//曲线
+	var sinX = 0;
+	var sinY = beisizerheight/2.0;
+	//轴长
+	var axisLenght = beisizerwidth;
+	//弧度宽度
+	var waveWidth = 0.014;
+	//海浪高度
+	var waveHeight = beisizerheight / 45.0;
+	ContenofBeisizer.lineWidth = beisizerlinewidth;
+
+
+	var drawSin = function (xofspeed) {
+		ContenofBeisizer.save();
+		//存放贝塞尔曲线的各个点
+		var points = [];
+		ContenofBeisizer.beginPath();
+		//创建贝塞尔点
+		for (var x = sinX;x < sinX +axisLenght;x+=80/axisLenght){
+			// var y = -Math.sin((sinX+x)*waveWidth); // 测试请解开注释，注释下一行
+			var y = -Math.sin((sinX+x)*waveWidth+xofspeed);
+			// points.push([x,sinY + y * waveHeight]); //测试请解开注释，注释下一行
+			points.push([x,rand+y*waveHeight]);     
+			// ContenofBeisizer.lineTo(x,sinY + y * waveHeight);  //测试请解开注释，注释下一行
+			ContenofBeisizer.lineTo(x,rand + y * waveHeight);  
+		}
+
+		ContenofBeisizer.lineTo(axisLenght,beisizerheight);
+		ContenofBeisizer.lineTo(sinX,beisizerheight);
+		ContenofBeisizer.lineTo(points[0][0],points[0][1]);
+		ContenofBeisizer.stroke();
+		ContenofBeisizer.restore();
+
+		//贝塞尔曲线样式设置
+		ContenofBeisizer.strokeStyle = "#FE7F5A";
+		ContenofBeisizer.fillStyle = "#FE7F5A";
+		ContenofBeisizer.fill();
+	};
+	// drawSin();
+	var speed = 0.1;   //数值越大速率越快
+	var xofspeed = 0;  //波浪横向的偏移量
+	var rand = 90;  //波浪高度
+
+	var rendY = function () {
+		ContenofBeisizer.clearRect(0,0,beisizerwidth,beisizerheight);
+		//控制海浪高度
+		var tmp = 0.5;
+		// rand -= tmp;
+		// var b = beisizerheight - rand;
+		//控制循环涨潮
+		// if (parseInt(b)==beisizerheight){
+		//     rand = beisizerheight;
+		// }
+		drawSin(xofspeed);
+		// drawSinl(xofspeed);
+		xofspeed += speed;
+		requestAnimationFrame(rendY);
+	};
+	rendY();
+
+
+
+	
+
+	function Car (name,width,color,height){
+		this.width = width;
+		this.color = color;
+		this.name = name;
+		this.height = height;
+
+		var prepareColor = 'gary';
+
+		this.changeColor = function(){
+			this.color = prepareColor;
+		};
+		this.chanegePrepareColor = function(target){
+			prepareColor = target;
+		};
+		this.sarColor = function(){
+			console.log(prepareColor);
+		}
+
+	}
+
+	var car = new Car();
+	
+
+</script>
+</body>
+</html>

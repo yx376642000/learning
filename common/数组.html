@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	
+</head>
+<body>
+	<p style="width: 200px;height: 50px;line-height: 50px;overflow-x: scroll;background: #ddd;white-space: nowrap;">
+		奥术大师实打实大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大所大四大三大所大所大所阿萨德
+	</p>
+	
+<script type="text/javascript">
+
+/*改变原数组*/
+
+	/*1 、push 方法*/
+	var arr = [1,2,3,4,5,6];
+	Array.prototype.push = function(){
+		for(var i = 0; i < arguments.length; i++){
+			this[this.length] = arguments[i];
+		}
+		return this.length;
+	};
+	/*2 、shift*/
+	//移除数组第一项并返回该项
+	var res = arr.shift();
+
+	//3 、 pop 方法
+	// 移除数组最后一位
+
+	// 4、 unshift 方法
+	// 添加到数组第一位
+
+	// 5、 reverse 方法
+	// 反转数组
+
+	//6 、splice
+	// arr.splice(从第几位开始，截取的长度，在切口处添加的数据)
+
+	//7 、sort 方法
+	var arr2 = [1,5,4,3,55,11,10,20,15,14,99,50,3];
+
+	arr2.sort(function(a,b){
+		return a - b; //升序
+		//return b - a; 降序 
+	});
+
+
+	//打乱顺序
+	var arr3 = [1,2,3,4,5,6,7,8];
+	arr3.sort(function(a,b){
+		return Math.random() - 0.5;
+	});
+
+
+	var car1 = {
+		name : 'benz',
+		year : 10 ,
+		color : 'gary',
+		category : 'sport'
+	}
+
+	var car2 = {
+		name : 'BMW',
+		year : 8 ,
+		color : 'red',
+		category : 'suv'
+	}
+
+	var car3 = {
+		name : 'benz',
+		year : 10 ,
+		color : 'gary',
+		category : 'suv'
+	}
+
+	var car4 = {
+		name : 'nissa',
+		year : 15 ,
+		color : 'blue',
+		category : 'sport'
+	}
+
+	var car5 = {
+		name : 'mazida',
+		year : 18 ,
+		color : 'white',
+		category : 'cx-4'
+	}
+	var arr4 = [car1,car2,car3,car4,car5];
+	arr4.sort(function(a,b){
+		return a.year - b.year;	
+	})
+</script>
+</body>
+</html>

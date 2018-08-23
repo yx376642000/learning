@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+</head>
+<body>
+	
+	
+<script type="text/javascript">
+
+
+	//圣杯模式
+	/*function inherit(Target,Origin){
+		function F(){};
+		//1
+		F.prototype = Origin.prototype;
+		//2
+		Target.prototype = new F();
+		
+		//constuctor指向自己
+		Target.prototype.constuctor = Target;
+		//添加一个超类
+		Target.prototype.uber = Origin.prototype;
+
+	}*/
+
+	var inherit = ( function (){
+		var F = function () {};
+		return function(Target,Origin){
+			F.prototype = Origin.prototype;
+			Target.prototype = new F();
+			Target.prototype.constuctor = Target;
+			Target.prototype.uber = Origin.prototype;
+		}
+	}());
+
+	Father.prototype.lastName = 'Yuan'
+	
+	function Father(){}
+	
+	function Son(){}
+	
+	inherit(Son,Father);
+	var son = new Son();
+	var father = new Father();
+
+	var str = 'http://localhost/wap/index.php?ctl=experience_gold_app&id=10&user_id=108381';
+	
+</script>
+</body>
+</html>

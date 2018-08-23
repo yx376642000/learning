@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>line</title>
+</head>
+<body>
+	<canvas id="canvas" width="900" height="600" style="display: block; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext('2d');
+		ctx.lineWidth = 5;
+
+		ctx.beginPath();
+		ctx.moveTo(100,100);
+		ctx.lineTo(500,100);
+		ctx.lineTo(500,50);
+		ctx.lineTo(700,125);
+		ctx.lineTo(500,200);
+		ctx.lineTo(500,150);
+		ctx.lineTo(100,150);
+		ctx.strokeStyle = "#f00";
+		ctx.fillStyle = "blue";
+		ctx.closePath();
+		ctx.stroke();
+		ctx.fill();
+
+		
+		ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(500,300);
+		ctx.lineTo(500,250);
+		ctx.lineTo(700,325);
+		ctx.lineTo(500,400);
+		ctx.lineTo(500,350);
+		ctx.lineTo(100,350);
+		ctx.strokeStyle = "blue";
+		ctx.closePath();
+		ctx.fillStyle = '#f00';
+		ctx.fill();
+		ctx.stroke();
+
+
+
+
+
+
+	</script>
+</body>
+</html>

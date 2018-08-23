@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好友列表</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script src="js/vue.js"></script>
+    <style type="text/css">
+        body{
+            background: url(img/timg.jpg);
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        .wrap{
+            padding: 30px 20px 0;
+        }
+        .list h2{
+            background-color: rgba(0,0,0,0.5);
+            line-height: 50px;
+            font-size: 14px;
+            color: #fff;
+            padding: 0 0 0 10px;
+            margin: 10px 0;
+        }
+        .list h2.active{
+            background-color: rgba(200,200,200,0.5);
+        }
+        .list h2 span{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-width:6px 0 6px 6px;
+            border-style:solid;
+            border-color:transparent transparent transparent #fff;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .list h2 span.bottom{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-width:6px 6px 0;
+            border-style:solid;
+            border-color:#fff transparent transparent;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .list ul{display: none;}
+        .list ul{
+            padding: 0 0 0 10px;
+            line-height: 30px;
+            color:#fff;
+        }
+        .list ul.show{display: block;}
+    </style>
+</head>
+<body>
+    <div id="app" class="wrap">
+        <div class="list">
+            <div v-for='item,i in friendList'>
+                <h2 @click='showListHandle(i)' :class='{active : i === index}'>
+                    <span :class='{bottom : i === index}'></span>
+                    {{item.title}}
+                </h2>
+                <ul :class='{show : i === index}'>
+                    <li v-for='opt in item.list'>{{opt}}</li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        var data = [
+            {
+                title:"品牌",
+                list:['苹果','小米','华为','锤子','三星','魅族','VIVO','OPPO','LeTV','360','中兴','索尼','Nokia']
+            },
+            {
+                title:'尺寸',
+                list:['3.0英寸以下','3.0-3.9英寸','4.0-4.5英寸','4.6-4.9英寸','5.0-5.5英寸','6.0英寸以上']
+            },
+            {
+                title:'系统',
+                list:['安卓(Android)','苹果(ios)','微软(WindowsPhone)','无','其他']
+            },
+            {
+                title:'网络',
+                list:['联通3G','双卡单4G','双卡双4G','联通4G','电信4G','移动4G']
+            }
+        ];
+        data.forEach(item => item.index = -1);
+        var app = new Vue({
+            el:"#app",
+            data:{
+                friendList:data,
+                index:-1
+            },
+            methods:{
+               showListHandle(i){
+                    i == this.index ? this.index = -1 : this.index = i;
+               }
+            }
+        });
+    </script>
+
+</body>
+</html>

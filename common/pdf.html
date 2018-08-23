@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>pdf.js展示1，上一页，下一页</title>
+	<script type="text/javascript" src="./0305/node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<h1>PDF.js Previous/Next example</h1>
+
+
+<canvas id="the-canvas"></canvas>
+<script src="./pdf/build/pdf.js"></script>
+<!-- <script src="pdf/build/pdf.worker.js"></script> -->
+<script>
+   
+
+    
+
+    $(function(){
+       var url = './images/contract.pdf';
+	   PDFJS.workerSrc = './pdf/build/pdf.worker.js';
+	   PDFJS.getDocument(url).then(function getPdf(pdf) {
+           pdf.getPage(2).then(function getPage(page) {
+                       var scale = 1;
+                       var viewport = page.getViewport(scale);
+                       var canvas = document.getElementById('the-canvas');
+                       var context = canvas.getContext('2d');
+                       canvas.height = viewport.height;
+                       canvas.width = viewport.width;
+                       var renderContext = {
+                           canvasContext: context,
+                               viewport: viewport
+                      };
+                  page.render(renderContext);
+            });
+		});
+	});
+</script>
+</html>

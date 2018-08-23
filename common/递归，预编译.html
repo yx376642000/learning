@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+</head>
+<body>
+	
+	
+<script type="text/javascript">
+	/*function bar(){
+		return foo;
+		foo = 10;
+		function foo(){
+
+		}
+		var foo = 11;
+	}
+
+	console.log(bar())*/
+	// function foo(){}
+/*
+AO{
+	foo : function foo(){}
+}*/
+
+	// console.log(bar());
+	function bar(){
+		foo = 10;
+		function foo(){
+
+		}
+		var foo = 11;
+		return foo;
+	}
+	//11
+/*GO{
+	bar : function bar(){}
+}
+
+AO{
+	foo:function foo(){}
+}
+*/
+
+	a=100;
+	function demo(e){
+		function e(){}
+		arguments[0] = 2;
+		console.log(e);//2
+		if(a){
+			var b = 123;
+			/*function c(){
+
+			}*/
+		}
+		var c ;
+		a = 10;
+		var a ;
+		console.log(b);//undefined
+		f = 123;
+		// console.log(c);//function c(){}
+		console.log(a);//10
+	}
+
+
+	var a;
+	//demo(1);
+	//console.log(a)//100
+	//console.log(f)//123
+
+
+	/*GO{
+		a:100,
+		demo:function demo(){}
+	}
+
+	AO{
+		e : function e,
+		b : 123
+		c : function c(){},
+		a : undefined,
+
+	}*/
+</script>
+</body>
+</html>

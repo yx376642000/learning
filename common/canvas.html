@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>canvas加水印</title>
+</head>
+<style type="text/css">
+  *{
+    margin: 0;padding: 0;
+  }
+  img{
+    border: 0;
+    /*display: block;*/
+    width: 100%;
+  }
+</style>
+<body>
+  <canvas id="myCanvas">
+    Your browser does not support the HTML5 canvas tag.
+  </canvas>
+  <img src="./images/banner/1.jpg">
+  <img src="./images/banner/2.jpg">
+  <img src="./images/banner/3.jpg">
+  <img src="./images/banner/4.png">
+  <img src="./images/banner/5.png">
+  <img src="./images/banner/6.png">
+  
+<script>
+    
+    var imgsData = [];
+    console.log(imgsData);
+
+    var imgs = document.getElementsByTagName('img');
+    console.log(imgs)
+    for(var i = 0 , l = imgs.length; i < l; i++){
+      var img = {};
+      img.src = imgs[i].src;
+      img.width = imgs[i].width;
+      img.height = 300;
+      imgsData.push(img);
+    };
+
+
+    var canvas = document.getElementById('myCanvas');
+    var ctx=canvas.getContext("2d");
+
+    function watermark(ctx,imgsData){
+      //准备img对象 
+      var img = new Image(); 
+      img.src = imgsData.src;
+      img.width = imgsData.width;
+      img.height = imgsData.height;
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      
+      var logo = new Image();
+      logo.src = './images/banner/logo.png';
+
+      logo.width = img.width;
+      logo.height = img.height;
+
+      // 加载完成开始绘制
+      img.onload=function(ctx){
+         //准备canvas环境 
+         var canvas=document.getElementById("myCanvas");
+         var ctx=canvas.getContext("2d");
+         // 绘制图片
+         ctx.drawImage(img,0,0);
+         ctx.drawImage(logo,0,0);
+         // 绘制水印
+        setTimeout(function(){
+         
+          var newSrc = ctx.canvas.toDataURL("image/png");
+          imgs[0].src = newSrc;
+        },2000)
+      }
+     
+      // console.log(newSrc)
+
+     
+      // var file = convertBase64UrlToBlob(newSrc,"png")
+      // console.log(file)
+      // return imgsData.src = canvas.toDataURL("image/png");
+    }
+    function convertBase64UrlToBlob(urlData,type){
+      var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
+      //处理异常,将ascii码小于0的转换为大于0
+      var ab = new ArrayBuffer(bytes.length);
+      var ia = new Uint8Array(ab);
+      for (var i = 0; i < bytes.length; i++) {
+          ia[i] = bytes.charCodeAt(i);
+      }
+      return new Blob( [ab] , {type : 'image/'+type});
+  }
+
+    watermark(ctx,imgsData[1]);
+   
+</script>
+</body>
+</html>

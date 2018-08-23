@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_470641_olfborwdtc3rqkt9.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+</head>
+<body>
+	<input type="text" id="ipt" name="">
+	<input type="text" id="ipt2" name="">
+	
+<script type="text/javascript">
+
+	/*var x = 1 , y = z = 0;
+	function add(n) {
+		// body...
+		return n = n + 1 ;
+	}
+	y = add(x);//4
+	function add(n){
+		return n = n + 3;
+	}
+	z = add(x);//4
+
+
+	GO:{
+		x:1,
+		y:function add(n){return n = n + 1},
+		z:function add(n){return n = n + 3},
+		add:function add(n){return n = n + 3},
+	}*/
+	/*var str = 'asdasd奥术大师aaa啊';
+	function countLnegth(str){
+		var len = 0;
+		var len2 = str.length;
+		for(var i = 0; i < str.length ;i++){
+			if(str.charCodeAt(i) <= 255){
+				len ++;
+			}else{
+				len += 2;
+				len2++;
+			}
+		}
+		console.log(len);
+		console.log(len2)
+	}
+
+	countLnegth(str);*/
+
+	Car.prototype = {
+		width:1200,
+		height:2000,
+		name:"BMW",
+		run:function(){
+			console.log('i am running !')
+		}
+	}
+	function Car(color,owner){
+		this.color = color;
+		this.owner = owner;
+	}
+	var car = new Car('red','希声');
+
+
+	var oInp = document.getElementById('ipt');
+	var oInp2 = document.getElementById('ipt2');
+	var i = 0;
+	
+	// oInp2.onkeyup = function(){
+	// 	console.log(this.value)
+	// }
+	oInp2.oninput = function(){
+		console.log(this.value)
+	} 
+	oInp.onkeydown = function(){
+		var that = this;
+		//console.log(that.value)
+		setTimeout(function(){
+			console.log(that.value)
+		},0)
+
+	}
+</script>
+<script type="text/javascript">
+	
+			if(list_click == true){
+				list_click = false;
+				$("#prize,#prize_none").hide();
+				$("#list_prize,.opac").show();
+				var query = new Object();
+				$.ajax({
+					url: APP_ROOT+"/index.php?ctl=ajax&act=my_prize",
+					dataType: "json",
+					data:query,
+					type: "POST",
+					success: function(ajaxobj){
+						list_click = true;
+						console.log(ajaxobj.red_list.length);
+						console.log(ajaxobj)
+						if(ajaxobj.status == 1){
+							html1_bomb = "";
+							html2_bomb = "";
+							html3_bomb = "";
+							for(var red_use=0;red_use<ajaxobj.red_list.length;red_use++){
+				 				html1_bomb += '<div style="height:60px;width:100%;">'+
+				                            '<p class="f_l f14 pl15" style="width:350px;line-height:50px;">投资红包<i style="font-size:20px;color:#ff6e5f;">'+ajaxobj.red_list[red_use].num+'</i>'+ajaxobj.red_list[red_use].brief+'</p>'+
+				                            '<p class="f_r ticket_use">手气不错哦！</p>'+
+				                        '</div>';
+				            }
+				            $(".red_use").html(html1_bomb);
+				            $("#red_num_bomb").html(ajaxobj.red_list.length);
+				            for(var rate_use=0;rate_use<ajaxobj.quan_list.length;rate_use++){
+			 					html2_bomb += '<div style="height:60px;width:100%;">'+
+				                            '<p class="f_l f14 pl15" style="width:350px;line-height:50px;">加息券<i style="font-size:20px;color:#ff6e5f;">'+ajaxobj.quan_list[rate_use].num+'</i>'+ajaxobj.quan_list[rate_use].brief+'</p>'+
+				                            '<p class="f_r ticket_use">手气不错哦！</p>'+
+				                        '</div>';
+			 				}  
+			 				$(".rate_use").html(html2_bomb);
+			 				$("#quan_num_bomb").html(ajaxobj.quan_list.length);
+			 				for(var score_use=0;score_use<ajaxobj.score_list.length;score_use++){
+			 					html3_bomb += '<div style="height:60px;width:100%;">'+
+				                            '<p class="f_l f14 pl15" style="height:60px;line-height:60px;margin-left:30px;">获得积分<i style="font-size:20px;color:#ff6e5f;">'+ajaxobj.score_list[score_use].num+'</i></p>'+
+				                            '<p class="f_r ticket_use">手气不错哦！</p>'+
+				                        '</div>';
+			 				}  
+			 				$(".score_use").html(html3_bomb); 
+			 				$("#score_num_bomb").html(ajaxobj.score_list.length);
+						}else{
+							location.href="{$APP_ROOT}/user-login";
+						}
+					}
+						
+				});
+			}
+</script>
+</body>
+</html>

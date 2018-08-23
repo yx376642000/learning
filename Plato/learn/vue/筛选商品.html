@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>筛选商品</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script src="js/vue.js"></script>
+    <style type="text/css">
+        #app{
+            padding: 20px 0px;
+            width: 600px;
+            margin: 100px auto;
+            line-height: 40px;
+        }
+        .choose{
+            background-color: #CCE0E0;
+            padding: 0 20px;
+            font-size: 16px;
+            color: #000;
+            line-height: 50px;
+        }
+        #app ul{
+            padding: 0 20px;
+            background-color: #E3EEEE;
+        }
+        #app ul li{
+            border-bottom: 1px dotted #CCE0E0;
+            color:#666;
+        }
+        #app ul li a{
+            padding: 0 5px;
+            color:#000;
+        }
+        #app ul li a.active{
+            color: #006390;
+        }
+        mark{
+            background-color: transparent;
+            padding: 0 0 0 5px;
+            border: 1px solid #006390;
+            font-size: 12px;
+            margin-right: 5px; 
+        }
+        mark a{
+            padding: 0 3px;
+            background-color: #006390;
+            color:#fff;
+            font-size: 12px;
+            margin-left: 5px;
+            border: 1px solid #006390;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="choose">
+            你的选择：
+            <!-- <mark>苹果<a href="javascript:;">X</a></mark> -->
+            <mark v-for="item,key in choose">
+                {{item}}
+                <a href="javascript:;" @click='cancleChoose(key)'>X</a>
+            </mark>
+        </div>
+        <ul>
+            <li v-for='item,index in filterList'>
+                {{item.title}}:
+                <a  
+                    href="javascript:;"
+                    v-for='option,i in item.list'
+                    :class = "{active : item.index === i}"
+                    @click='chooseHandle(index,option,i)'
+                >{{option}}</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var data = [
+            {
+                title:"品牌",
+                list:['苹果','小米','华为','锤子','三星','魅族','VIVO','OPPO','LeTV','360','中兴','索尼','Nokia']
+            },
+            {
+                title:'尺寸',
+                list:['3.0英寸以下','3.0-3.9英寸','4.0-4.5英寸','4.6-4.9英寸','5.0-5.5英寸','6.0英寸以上']
+            },
+            {
+                title:'系统',
+                list:['安卓(Android)','苹果(ios)','微软(WindowsPhone)','无','其他']
+            },
+            {
+                title:'网络',
+                list:['联通3G','双卡单4G','双卡双4G','联通4G','电信4G','移动4G']
+            }
+        ];
+        data.forEach(item => item.index = -1);
+        var app = new Vue({
+            el:"#app",
+            data:{
+                filterList:data,
+                choose:{}
+            },
+            methods:{
+                chooseHandle(index,option,i){
+                    this.$set(this.choose,index,option);
+                    this.filterList[index].index = i;
+                },
+                cancleChoose(key){
+                    //删除对象的属性
+                    this.filterList[key].index = -1;
+                    this.$delete(this.choose,key);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

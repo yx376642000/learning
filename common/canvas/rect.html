@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rect</title>
+</head>
+<body>
+	<canvas id="canvas" width="900" height="600" style="display: block; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext('2d');
+		ctx.lineWidth = 5;
+		ctx.fillStyle = '#f00';
+		ctx.strokeStyle = "#f00";
+
+		//矩形
+		// ctx.rect(50,50,700,400);
+
+		// 填充矩形
+		// ctx.fillRect(50,50,700,400);
+
+		// 描边矩形
+		ctx.strokeRect(50,50,700,400);
+
+
+	</script>
+</body>
+</html>

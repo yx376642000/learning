@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>star</title>
+</head>
+<body>
+	<canvas id="canvas" width="900" height="600" style="display: block;background: #f00; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext('2d');
+		ctx.linWidth = 10;
+
+		function drawStar(ctx, r, R, x, y,rotation){
+			ctx.beginPath();
+
+			// 循环生成点
+			for( var i = 0; i < 5; i++){
+				ctx.lineTo(Math.cos((18 + i * 72 - rotation) / 180 * Math.PI) * R + x , -Math.sin((18 + i * 72 - rotation ) / 180 * Math.PI) * R + y);
+				ctx.lineTo(Math.cos((54 + i * 72 - rotation) / 180 * Math.PI) * r + x , -Math.sin((54 + i * 72 - rotation ) / 180 * Math.PI) * r + y);
+			}
+
+
+			ctx.closePath();
+			ctx.fillStyle = "yellow";
+			// ctx.linWidth = lineWidth;
+			// ctx.stroke();
+			ctx.fill();
+
+		}
+		drawStar(ctx , 30 , 80, 120 , 120, 0);
+		drawStar(ctx , 8 , 20, 250 , 50, 30);
+		drawStar(ctx , 8 , 20, 320 , 130, 60);
+		drawStar(ctx , 8 , 20, 300 , 230, 0);
+		drawStar(ctx , 8 , 20, 220 , 320, 30);
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.nav-box{
+	width: 600px;
+	margin: 100px auto;
+	height: 60px;
+	line-height: 60px;
+	background-color: #f4f4f4;
+}
+.nav li {
+	float: left;
+	width: 100px;
+	text-align: center;
+	cursor: pointer;
+}
+.router-link-active{
+	background-color: #ff5140;
+	color: #fff;
+}
+.center{
+	font-size: 32px;
+	text-align: center;
+}
+.navAct{
+	background-color: yellow;
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.defineProperty</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <style type="text/css">
+        body{
+            font-size: 30px;
+        }
+        button{
+            width: 60px;
+            line-height: 30px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <h2 id="title">asds</h2>
+        <button id="btn">改变</button>
+    </div>
+    <script>
+        var data = {
+            title:"标题"
+        }
+        
+        function observer(obj){
+            Object.keys(obj).forEach((item) => {
+                defineReactive(obj,item,obj[item])
+            })
+        };
+        function defineReactive(obj,key,value){
+            Object.defineProperty(obj,key,{
+                get(){
+                    return value
+                },
+                set(newValue){
+                    value = newValue;
+                    title.innerHTML = data.title
+                }
+            })
+        }
+        var title = document.getElementById('title');
+        var btn = document.getElementById('btn');
+        title.innerHTML = data.title;
+        btn.onclick = function(){
+            data.title = "标题变了"
+        }
+        observer(data);
+    </script>
+
+</body>
+</html>

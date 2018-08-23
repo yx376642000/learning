@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineCap</title>
+</head>
+<body>
+	<canvas id="canvas" width="900" height="600" style="display: block; margin: 200px auto;border: 1px solid #f0f0f0;">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext('2d');
+		ctx.lineWidth = 20;
+
+		ctx.beginPath();
+		ctx.moveTo(100,100);
+		ctx.lineTo(500,100);
+		
+		ctx.strokeStyle = "#f00";
+		ctx.lineCap = 'butt'
+		ctx.stroke();
+	
+		ctx.beginPath();
+		ctx.moveTo(100,200);
+		ctx.lineTo(500,200);
+		ctx.lineCap = 'round';
+		ctx.stroke();
+
+		
+		ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(500,300);
+		ctx.lineCap = 'square'
+		ctx.strokeStyle = "blue";
+		
+		ctx.stroke();
+
+
+		ctx.beginPath();
+		ctx.moveTo(100,50);
+		ctx.lineTo(100,350);
+		ctx.moveTo(500,50);
+		ctx.lineTo(500,350);
+		ctx.lineWidth = 1;
+		ctx.strokeStyle = "blue";
+		ctx.stroke();
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
